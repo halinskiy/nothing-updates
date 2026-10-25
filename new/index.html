@@ -3,26 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#0D0D0E">
 <meta name="robots" content="noindex">
 <title>Nothing · что нового</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.36' cy='.3' r='.75'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.6' stop-color='%23e9e9e9'/%3E%3Cstop offset='1' stop-color='%23bdbdbd'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/moon-64.png">
 <style>
 @font-face{font-family:Inter;src:url("assets/inter-regular.ttf") format("truetype");font-weight:400;font-display:swap}
 @font-face{font-family:Inter;src:url("assets/inter-medium.ttf") format("truetype");font-weight:500;font-display:swap}
 @font-face{font-family:Inter;src:url("assets/inter-bold.ttf") format("truetype");font-weight:700;font-display:swap}
 :root{
- --bg:#FFFFFF;--ink:#16140F;--muted:#6E6A61;--line:#E7E4DD;
- --ball:radial-gradient(circle at 36% 30%,#FFFFFF 0%,#F2F2F2 42%,#D9D9D9 78%,#C4C4C4 100%);
- --ball-shadow:0 16px 32px rgba(22,20,15,.08),0 2px 4px rgba(22,20,15,.06);
- --font:"Inter",-apple-system,sans-serif;color-scheme:light;
+ --bg:#0D0D0E;--ink:#F3F2EF;--muted:#8E8B85;--line:#2A2927;
+ --font:"Inter",-apple-system,sans-serif;color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--font);-webkit-font-smoothing:antialiased}
 h1,h2,p,ul{margin:0}
 .void{min-height:100svh;display:grid;align-content:center;max-width:592px;margin-inline:auto;padding:96px max(24px,env(safe-area-inset-left,0px))}
-.ball{width:48px;height:48px;border-radius:50%;background:var(--ball);box-shadow:var(--ball-shadow)}
+.moon{display:block;width:64px;height:64px}
 .kicker{margin-top:48px;font-size:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .version{margin-top:8px;font-size:clamp(56px,10vw,80px);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .date{margin-top:16px;font-size:16px;color:var(--muted)}
@@ -47,7 +45,7 @@ h1,h2,p,ul{margin:0}
 </head>
 <body>
 <main class="void" aria-live="polite">
- <div class="ball rise" aria-hidden="true"></div>
+ <img class="moon rise" src="assets/moon-192.png" alt="" width="64" height="64">
  <p class="kicker rise">Nothing</p>
  <h1 class="version rise" id="version">&nbsp;</h1>
  <p class="date rise" id="date">&nbsp;</p>
