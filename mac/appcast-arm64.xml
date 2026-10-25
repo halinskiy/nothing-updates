@@ -3,13 +3,13 @@
     <channel>
         <title>Nothing</title>
         <item>
-            <title>0.20.1.23</title>
-            <pubDate>Sun, 25 Oct 2026 18:02:20 +0000</pubDate>
-            <sparkle:version>0.20.1.23</sparkle:version>
-            <sparkle:shortVersionString>0.20.1.23</sparkle:shortVersionString>
+            <title>0.20.1.24</title>
+            <pubDate>Sun, 25 Oct 2026 19:53:11 +0000</pubDate>
+            <sparkle:version>0.20.1.24</sparkle:version>
+            <sparkle:shortVersionString>0.20.1.24</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/halinskiy/nothing-updates/releases/download/v0.1.22/Nothing-0.1.22.zip" length="175418602" type="application/octet-stream" sparkle:edSignature="wuz80COJOs9G8FeeUXiKpUApnJ7Kl9rPS5UFrJf293pidHNEvjOysj5ST5mIFRdO52VneKpXAz17qpHN8B1VDg=="/>
+            <enclosure url="https://github.com/halinskiy/nothing-updates/releases/download/v0.1.23/Nothing-0.1.23.zip" length="175415005" type="application/octet-stream" sparkle:edSignature="9Y9TZRsxQrUO+odBQvHXPrintBJqQfWf1qV+fGiXdKAL027Qz09eIobD0P11RxyQzAuiIBmosCNXkpYerQYdCA=="/>
         </item>
     </channel>
 </rss>
