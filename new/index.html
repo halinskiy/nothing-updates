@@ -56,6 +56,7 @@ h1,h2,p,ul{margin:0}
  <button type="button" class="more rise" id="more" hidden aria-expanded="false" aria-controls="history">Что было раньше</button>
  <section class="history" id="history" hidden aria-label="Прошлые обновления"></section>
 </main>
+<script src="notes.js"></script>
 <script>
 const want = new URLSearchParams(location.search).get("v");
 const dateText = iso => new Date(iso + "T12:00:00").toLocaleDateString("ru-RU", {day: "numeric", month: "long", year: "numeric"}).replace(/\s*г\.$/, "");
@@ -95,8 +96,10 @@ function render(list) {
   });
 }
 
-fetch("notes.json", {cache: "no-cache"})
-  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+// notes.js (window.NOTHING_NOTES) also works from the copy inside the app,
+// where file:// forbids fetch; the site falls back to notes.json.
+(window.NOTHING_NOTES ? Promise.resolve(window.NOTHING_NOTES)
+  : fetch("notes.json", {cache: "no-cache"}).then(r => r.ok ? r.json() : Promise.reject(r.status)))
   .then(render)
   .catch(() => {
     document.getElementById("version").textContent = "Обновлён";
