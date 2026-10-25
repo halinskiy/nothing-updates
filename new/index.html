@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="robots" content="noindex">
+<title>Nothing · что нового</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.36' cy='.3' r='.75'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.6' stop-color='%23e9e9e9'/%3E%3Cstop offset='1' stop-color='%23bdbdbd'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:Inter;src:url("assets/inter-regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:Inter;src:url("assets/inter-medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:Inter;src:url("assets/inter-bold.ttf") format("truetype");font-weight:700;font-display:swap}
+:root{
+ --bg:#FFFFFF;--ink:#16140F;--muted:#6E6A61;--line:#E7E4DD;
+ --ball:radial-gradient(circle at 36% 30%,#FFFFFF 0%,#F2F2F2 42%,#D9D9D9 78%,#C4C4C4 100%);
+ --ball-shadow:0 16px 32px rgba(22,20,15,.08),0 2px 4px rgba(22,20,15,.06);
+ --font:"Inter",-apple-system,sans-serif;color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,p,ul{margin:0}
+.void{min-height:100svh;display:grid;align-content:center;max-width:592px;margin-inline:auto;padding:96px max(24px,env(safe-area-inset-left,0px))}
+.ball{width:48px;height:48px;border-radius:50%;background:var(--ball);box-shadow:var(--ball-shadow)}
+.kicker{margin-top:48px;font-size:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.version{margin-top:8px;font-size:clamp(56px,10vw,80px);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.date{margin-top:16px;font-size:16px;color:var(--muted)}
+.notes{margin-top:48px;padding:0;list-style:none;display:grid;gap:16px;max-width:52ch}
+.more{justify-self:start;margin-top:64px;padding:8px 0;border:0;background:none;color:var(--muted);font:500 16px/1.5 var(--font);text-decoration:underline;text-decoration-color:var(--line);text-decoration-thickness:1px;text-underline-offset:6px;cursor:pointer}
+.more:hover{color:var(--ink);text-decoration-color:currentColor}
+.more:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:4px}
+.history{margin-top:48px;padding-top:48px;border-top:1px solid var(--line);display:grid;gap:48px}
+.release{display:grid;gap:16px}
+.release h2{font-size:16px;font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums}
+.release h2 span{margin-left:16px;font-weight:400;color:var(--muted)}
+.release ul{padding:0;list-style:none;display:grid;gap:8px;color:var(--muted);font-size:16px;max-width:56ch}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:no-preference){
+ .rise{opacity:0;transform:translateY(8px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+ .rise:nth-child(2){animation-delay:.08s}.rise:nth-child(3){animation-delay:.16s}
+ .rise:nth-child(4){animation-delay:.24s}.rise:nth-child(5){animation-delay:.32s}.rise:nth-child(6){animation-delay:.4s}
+ @keyframes rise{to{opacity:1;transform:none}}
+}
+@media(max-width:520px){body{font-size:17px}.void{padding-block:64px;padding-inline:16px}.kicker{margin-top:32px}.notes{margin-top:32px}.more{margin-top:48px}}
+</style>
+</head>
+<body>
+<main class="void" aria-live="polite">
+ <div class="ball rise" aria-hidden="true"></div>
+ <p class="kicker rise">Nothing</p>
+ <h1 class="version rise" id="version">&nbsp;</h1>
+ <p class="date rise" id="date">&nbsp;</p>
+ <ul class="notes rise" id="notes"></ul>
+ <button type="button" class="more rise" id="more" hidden aria-expanded="false" aria-controls="history">Что было раньше</button>
+ <section class="history" id="history" hidden aria-label="Прошлые обновления"></section>
+</main>
+<script>
+const want = new URLSearchParams(location.search).get("v");
+const dateText = iso => new Date(iso + "T12:00:00").toLocaleDateString("ru-RU", {day: "numeric", month: "long", year: "numeric"}).replace(/\s*г\.$/, "");
+const items = notes => notes.map(n => { const li = document.createElement("li"); li.textContent = n; return li; });
+
+function render(list) {
+  let i = list.findIndex(e => e.bundle === want || e.version === want);
+  if (i < 0) i = 0;
+  const current = list[i];
+  document.title = "Nothing " + current.version;
+  document.getElementById("version").textContent = current.version;
+  document.getElementById("date").textContent = dateText(current.date);
+  document.getElementById("notes").replaceChildren(...items(current.notes));
+  const older = list.slice(i + 1);
+  if (!older.length) return;
+  const history = document.getElementById("history");
+  for (const e of older) {
+    const article = document.createElement("article");
+    article.className = "release";
+    const h2 = document.createElement("h2");
+    h2.textContent = e.version;
+    const span = document.createElement("span");
+    span.textContent = dateText(e.date);
+    h2.append(span);
+    const ul = document.createElement("ul");
+    ul.append(...items(e.notes));
+    article.append(h2, ul);
+    history.append(article);
+  }
+  const more = document.getElementById("more");
+  more.hidden = false;
+  more.addEventListener("click", () => {
+    const open = history.hidden;
+    history.hidden = !open;
+    more.setAttribute("aria-expanded", String(open));
+    more.textContent = open ? "Скрыть" : "Что было раньше";
+  });
+}
+
+fetch("notes.json", {cache: "no-cache"})
+  .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  .then(render)
+  .catch(() => {
+    document.getElementById("version").textContent = "Обновлён";
+    document.getElementById("date").textContent = "Заметки не загрузились, нет сети.";
+  });
+</script>
+</body>
+</html>
