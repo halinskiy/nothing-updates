@@ -27,6 +27,8 @@ h1,h2,p,ul{margin:0}
 .version{margin-top:8px;font-size:clamp(56px,10vw,80px);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .date{margin-top:16px;font-size:16px;color:var(--muted)}
 .notes{margin-top:48px;padding:0;list-style:none;display:grid;gap:16px;max-width:52ch}
+/* Opened inside Nothing (the copy in the app): the page sits on the window's blur, like the empty tab. */
+html.in-app,html.in-app body{background:transparent}
 .more{justify-self:start;margin-top:64px;padding:8px 0;border:0;background:none;color:var(--muted);font:500 16px/1.5 var(--font);text-decoration:underline;text-decoration-color:var(--line);text-decoration-thickness:1px;text-underline-offset:6px;cursor:pointer}
 .more:hover{color:var(--ink);text-decoration-color:currentColor}
 .more:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:4px}
@@ -44,6 +46,7 @@ h1,h2,p,ul{margin:0}
 }
 @media(max-width:520px){body{font-size:17px}.void{padding-block:64px;padding-inline:16px}.kicker{margin-top:32px}.notes{margin-top:32px}.more{margin-top:48px}}
 </style>
+<script>if(location.protocol==="file:")document.documentElement.classList.add("in-app")</script>
 </head>
 <body>
 <main class="void" aria-live="polite">
