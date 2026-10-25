@@ -3,13 +3,22 @@
     <channel>
         <title>Nothing</title>
         <item>
+            <title>0.20.1.20</title>
+            <pubDate>Sun, 25 Oct 2026 13:49:08 +0000</pubDate>
+            <sparkle:version>0.20.1.20</sparkle:version>
+            <sparkle:shortVersionString>0.20.1.20</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/halinskiy/nothing-updates/releases/download/v0.1.19/Nothing-0.1.19.zip" length="174953426" type="application/octet-stream" sparkle:edSignature="eBS8nZzZWWYN62fWI188W19RJ9n7AkxhLFT5Mm/rQEgCJ4ohnZjcFKKkIjSif0xIeD0k02TTqf4aScV4bzRAAQ=="/>
+        </item>
+        <item>
             <title>0.20.1.19</title>
-            <pubDate>Sun, 25 Oct 2026 03:18:24 +0000</pubDate>
+            <pubDate>Sun, 25 Oct 2026 13:49:08 +0000</pubDate>
             <sparkle:version>0.20.1.19</sparkle:version>
             <sparkle:shortVersionString>0.20.1.19</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/halinskiy/nothing-updates/releases/download/v0.1.18/Nothing-0.1.18.zip" length="174958441" type="application/octet-stream" sparkle:edSignature="b2jTKlPiB0dOVPGCfF18+n8h1QNMhezooxTuiXPzP2UbjL+dNBhrvPZW5FbHkcKtipIo9ceH6V3La+Y3dY26Aw=="/>
+            <enclosure url="https://github.com/halinskiy/nothing-updates/releases/download/v0.1.19/Nothing-0.1.19.zip" length="174958441" type="application/octet-stream" sparkle:edSignature="ac8NIdy2A7mf0sFDUOu787qecAZDu9uBn0mYkGsFqzYAqTRraUFBrtdSGSF2+1kVsAvnGJykQMnn7p5U5BBqBg=="/>
         </item>
     </channel>
 </rss>

@@ -1,5 +1,15 @@
 window.NOTHING_NOTES = [
  {
+  "version": "0.1.19",
+  "build": 20,
+  "bundle": "0.20.1.20",
+  "date": "2026-10-25",
+  "notes": [
+   "Ссылки на страницы браузера теперь nothing:// вместо helium://, например nothing://settings.",
+   "Старые helium:// и chrome:// тоже открываются."
+  ]
+ },
+ {
   "version": "0.1.18",
   "build": 19,
   "bundle": "0.20.1.19",
