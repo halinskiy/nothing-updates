@@ -3,27 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0D0D0E">
+<meta name="theme-color" content="#0B0B0C">
 <meta name="robots" content="noindex">
 <title>Nothing · что нового</title>
-<link rel="icon" type="image/png" href="assets/moon-64.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1.2 -1.2 2.4 2.4'%3E%3Cmask id='c'%3E%3Ccircle r='1' fill='%23fff'/%3E%3Ccircle cx='.38' cy='-.16' r='.82' fill='%23000'/%3E%3C/mask%3E%3Ccircle r='1' fill='%23F1F0EC' mask='url(%23c)'/%3E%3C/svg%3E">
 <style>
 @font-face{font-family:Inter;src:url("assets/inter-regular.ttf") format("truetype");font-weight:400;font-display:swap}
 @font-face{font-family:Inter;src:url("assets/inter-medium.ttf") format("truetype");font-weight:500;font-display:swap}
 @font-face{font-family:Inter;src:url("assets/inter-bold.ttf") format("truetype");font-weight:700;font-display:swap}
 :root{
- --bg:#1B1B1C;--ink:#F3F2EF;--muted:#9A9791;--line:#353437;
- --paper:url("assets/paper-dark.jpg");
- /* Pressed into the paper: a dark lip above the letters, a faint light one below. */
- --press:0 -1px 0 rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.05);
+ --bg:#0B0B0C;--ink:#F3F2EF;--muted:#9A9791;--line:#353437;--moon:#F1F0EC;
+ /* Velvet: an even blue-noise grain, the void is never flat. */
+ --velvet:url("assets/blue-noise.png");
  --font:"Inter",-apple-system,sans-serif;color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg) var(--paper) 0 0/1024px repeat;color:var(--ink);font:400 18px/1.6 var(--font);-webkit-font-smoothing:antialiased;text-shadow:var(--press)}
+body{margin:0;background:var(--velvet) 0 0/128px repeat,var(--bg);color:var(--ink);font:400 18px/1.6 var(--font);-webkit-font-smoothing:antialiased}
 h1,h2,p,ul{margin:0}
 .void{min-height:100svh;display:grid;align-content:center;max-width:592px;margin-inline:auto;padding:96px max(24px,env(safe-area-inset-left,0px))}
-.moon{display:block;width:64px;height:64px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5)) drop-shadow(0 1px 2px rgba(0,0,0,.6))}
+.moon{display:block;width:72px;height:72px;overflow:visible}
 .kicker{margin-top:48px;font-size:16px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .version{margin-top:8px;font-size:clamp(56px,10vw,80px);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .date{margin-top:16px;font-size:16px;color:var(--muted)}
@@ -48,7 +47,15 @@ h1,h2,p,ul{margin:0}
 </head>
 <body>
 <main class="void" aria-live="polite">
- <img class="moon rise" src="assets/moon-192.png" alt="" width="64" height="64">
+ <!-- The moon of the icon, flat: a disc with a smaller disc bitten out. -->
+ <svg class="moon rise" viewBox="-1.2 -1.2 2.4 2.4" aria-hidden="true">
+  <mask id="crescent" maskUnits="userSpaceOnUse" x="-1.3" y="-1.3" width="2.6" height="2.6">
+   <rect x="-1.3" y="-1.3" width="2.6" height="2.6" fill="#000"/>
+   <circle r="1" fill="#fff"/>
+   <circle cx=".38" cy="-.16" r=".82" fill="#000"/>
+  </mask>
+  <circle r="1" fill="var(--moon)" mask="url(#crescent)"/>
+ </svg>
  <p class="kicker rise">Nothing</p>
  <h1 class="version rise" id="version">&nbsp;</h1>
  <p class="date rise" id="date">&nbsp;</p>
