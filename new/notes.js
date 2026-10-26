@@ -1,5 +1,14 @@
 window.NOTHING_NOTES = [
  {
+  "version": "0.1.32",
+  "build": 33,
+  "bundle": "0.20.1.33",
+  "date": "2026-10-26",
+  "notes": [
+   "Полоса вкладок больше не заходит на боковую панель Claude in Chrome."
+  ]
+ },
+ {
   "version": "0.1.31",
   "build": 32,
   "bundle": "0.20.1.32",
